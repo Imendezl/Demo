@@ -5,10 +5,12 @@ using UnityEngine;
 public class SC_PlayerController : MonoBehaviour
 {
 
-    public float speed, multDashSpeed, startDashTime, betweenDashTime;
+    public float speed, multDashSpeed, startDashTime, betweenDashTime, health, damage;
+    public Transform respawn;
+
 
     private Rigidbody2D rb;
-    private Vector2 moveVelocity, moveInput;
+    private Vector2 moveVelocity, moveInput, respawnLocation;
     private float dashTime, dashCountdown;
     private bool dashing, startDashCountdown;
 
@@ -18,7 +20,7 @@ public class SC_PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         dashing = false;
         dashCountdown = betweenDashTime;
-
+        respawnLocation = new Vector2 (respawn.transform.position.x, respawn.transform.position.y);
     }
 
 

@@ -155,9 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e39e68a267d2e488c0a180b77ba2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  dashSpeed: 0
-  startDashTime: 0
+  speed: 7
+  multDashSpeed: 5
+  startDashTime: 0.05
+  betweenDashTime: 1
 --- !u!212 &76606443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76606441}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
