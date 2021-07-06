@@ -466,6 +466,8 @@ MonoBehaviour:
   waitTime: 2
   exit: {fileID: 7857788501291449167, guid: cb7c2cc32fa51e84aa71efd6d9b331b6, type: 3}
   alternative: {fileID: 4685336658922653750, guid: 6ff8171201865d44a9c5faec820fd842, type: 3}
+  numSpawns: 20
+  spawncount: 0
 --- !u!4 &741033116
 Transform:
   m_ObjectHideFlags: 0

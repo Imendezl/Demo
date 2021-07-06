@@ -15,53 +15,91 @@ public class SC_RoomSpawner : MonoBehaviour
     private int rand;
     private bool spawned = false;
 
-    public float waitTime = 4f;
+
 
     void Start()
     {
-        Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<SC_RoomTemplates>();
-        Invoke("Spawn", 0.1f);
-        
+        Invoke("Spawn", 1f);
+
+
+
     }
 
     void Spawn()
     {
+
         if (spawned == false)
-        {           
+        {
+
+
             switch (openingDirection)
             {
                 case 1:
-                    rand = Random.Range(0, templates.topRooms.Length);
-                    Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                    if (templates.GetSpawnCount() < templates.numSpawns)
+                    {
+                        rand = Random.Range(0, templates.topRooms.Length);
+                        Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+
+
+                        templates.SetSpawnCount(templates.GetSpawnCount() + 1);
+
+
+                    }
+
                     break;
                 case 2:
-                    rand = Random.Range(0, templates.bottomRooms.Length);
-                    Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                    if (templates.GetSpawnCount() < templates.numSpawns)
+                    {
+                        rand = Random.Range(0, templates.bottomRooms.Length);
+                        Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+
+
+                        templates.SetSpawnCount(templates.GetSpawnCount() + 1);
+
+                    }
                     break;
                 case 3:
-                    rand = Random.Range(0, templates.rightRooms.Length);
-                    Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                    if (templates.GetSpawnCount() < templates.numSpawns)
+                    {
+                        rand = Random.Range(0, templates.rightRooms.Length);
+                        Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+
+
+                        templates.SetSpawnCount(templates.GetSpawnCount() + 1);
+
+                    }
                     break;
                 case 4:
-                    rand = Random.Range(0, templates.leftRooms.Length);
-                    Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                    if (templates.GetSpawnCount() < templates.numSpawns)
+                    {
+                        rand = Random.Range(0, templates.leftRooms.Length);
+                        Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+
+
+                        templates.SetSpawnCount(templates.GetSpawnCount() + 1);
+
+                    }
                     break;
 
             }
+
+
+            spawned = true;
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("SpawnPoint"))
+        {
             spawned = true;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("SpawnPoint")){
-            if(other.GetComponent<SC_RoomSpawner>().spawned == false && spawned == false){
-                //Instantiate(templates.alternative, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-            
-            spawned = true;
-        }
-    }
+
+
+
 
 }

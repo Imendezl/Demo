@@ -13,6 +13,9 @@ public class SC_RoomTemplates : MonoBehaviour
     private bool spawnedExit;
     public GameObject exit;
     public GameObject alternative;
+    public int numSpawns;
+    [SerializeField]
+    private int spawncount;
 
     void Update(){
         if(waitTime <=0 && spawnedExit == false){
@@ -25,6 +28,14 @@ public class SC_RoomTemplates : MonoBehaviour
         } else{
             waitTime -= Time.deltaTime;
         }
+    }
+
+    public int GetSpawnCount(){
+        return spawncount;
+    }
+
+    public void SetSpawnCount(int newSpawnCount){
+        spawncount = newSpawnCount;
     }
 
 }
