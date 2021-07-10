@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 76606446}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1149,7 +1149,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 67.34
+  orthographic size: 5.48
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2349,7 +2349,7 @@ GameObject:
   - component: {fileID: 1137903167}
   m_Layer: 0
   m_Name: Dungeon
-  m_TagString: Untagged
+  m_TagString: Dungeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2366,7 +2366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf93b725484f1ac439f06f530b14d9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberRooms: 5
+  numberRooms: 10
 --- !u!4 &1137903168
 Transform:
   m_ObjectHideFlags: 0

@@ -63,5 +63,10 @@ public class SC_Room
         return name;
     }
 
+    public SC_Room Neighbor(string direction)
+    {
+        return this.neighbors[direction];
+    }
+
 
 }
