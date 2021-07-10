@@ -10,31 +10,69 @@ public class SC_RoomTemplates : MonoBehaviour
     public List<GameObject> rooms;
 
     public float waitTime;
-    private bool spawnedExit;
+    public bool spawnedExit = false;
     public GameObject exit;
     public GameObject alternative;
     public int numSpawns;
     [SerializeField]
     private int spawncount;
 
-    void Update(){
-        if(waitTime <=0 && spawnedExit == false){
-            for(int i = 0; i< rooms.Count; i++){
-                if (i==rooms.Count-1){
-                    Instantiate(exit, rooms[i].transform.position, Quaternion.identity);
+    private List<Transform> newRoomPosition = new List<Transform>();
+
+    void Update()
+    {
+        if (waitTime <= 0 && spawnedExit == false)
+        {
+
+            for (int i = rooms.Count - 1; i >= 0; i--)
+            {
+
+                if (rooms[i] != null && spawnedExit == false)
+                {
+                    //Instantiate(exit, rooms[i].transform.position, Quaternion.identity);
                     spawnedExit = true;
+                    SC_Events.event_RoomCheck();
+
+                    /*if (spawnedExit)
+                    {
+                        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+                        for (int a = 0; a <= spawnPoints.Length - 1; a++)
+                        {
+                            if (!spawnPoints[a].GetComponent<Collider2D>().IsTouchingLayers())
+                            {
+                                Debug.Log(spawnPoints[a].transform.root.name);
+                                newRoomPosition.Add(spawnPoints[a].transform.root.transform);
+                                Destroy(spawnPoints[a].transform.root.gameObject);
+
+                            }else{
+                                if ()
+                            }
+                        }
+
+                    }*/
+
                 }
             }
-        } else{
-            waitTime -= Time.deltaTime;
         }
-    }
+        else
+        {
+            if (waitTime >= 0)
+            {
+                waitTime -= Time.deltaTime;
+            }
 
-    public int GetSpawnCount(){
+        }
+
+
+    }
+    public int GetSpawnCount()
+    {
         return spawncount;
     }
 
-    public void SetSpawnCount(int newSpawnCount){
+    public void SetSpawnCount(int newSpawnCount)
+    {
         spawncount = newSpawnCount;
     }
 

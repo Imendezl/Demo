@@ -14,13 +14,16 @@ public class SC_RoomSpawner : MonoBehaviour
     private SC_RoomTemplates templates;
     private int rand;
     private bool spawned = false;
+    public bool destroyerDetected = false;
+
 
 
 
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<SC_RoomTemplates>();
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", 0.1f);
+        SC_Events.event_RoomCheck += CheckRooms;
 
 
 
@@ -96,7 +99,23 @@ public class SC_RoomSpawner : MonoBehaviour
         {
             spawned = true;
         }
+        else if (other.CompareTag("Destroyer"))
+        {
+            destroyerDetected = true;
+        }
+
     }
+
+    void CheckRooms()
+    {
+        if (destroyerDetected == false)
+        {
+            Debug.Log("entrado");
+            Destroy(transform.root.gameObject);
+        }
+    }
+
+
 
 
 

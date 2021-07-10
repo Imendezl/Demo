@@ -12,9 +12,9 @@ public class SC_WallDetection : MonoBehaviour
     {
         if (other.CompareTag("wall"))
         {
-            Debug.Log("Eliminado");
+
             Destroy(transform.root.gameObject);
-            //WallSensor.wallSensor_event(gameObject.transform.root.GetInstanceID());
+
 
         }
     }
@@ -22,6 +22,5 @@ public class SC_WallDetection : MonoBehaviour
 }
 
 
-public static class WallSensor {
-    public static Action<int> wallSensor_event;
-}
+
+

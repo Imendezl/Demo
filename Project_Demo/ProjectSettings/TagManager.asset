@@ -7,6 +7,9 @@ TagManager:
   - SpawnPoint
   - Rooms
   - Room
+  - wall
+  - Sensor
+  - Destroyer
   layers:
   - Default
   - TransparentFX
