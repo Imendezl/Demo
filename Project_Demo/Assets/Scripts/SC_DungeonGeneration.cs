@@ -13,6 +13,13 @@ public class SC_DungeonGeneration : MonoBehaviour
 
 
 
+    /*The object will not be destroyed when we restart the scene.
+     However, Unity will still create a new Dungeon object every time the scene is started. 
+     So, we are going to save the first DungeonGeneration instance in a static attribute.
+
+     We are also going to generate the dungeon in this method. 
+     If the instance has already been set, we are only going to instantiate the current room prefab and we are going to delete the newly created Dungeon object.*/
+
     void Awake()
     {
         if (instance == null)
@@ -28,6 +35,9 @@ public class SC_DungeonGeneration : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    /*instantiate the room prefab. 
+    After generating the dungeon, it returns the initial room. Then, it loads the prefab from the Resources folder and instantiates the prefab.*/
     void Start()
     {
         string roomPrefabName = this.currentRoom.PrefabName();
@@ -94,6 +104,9 @@ public class SC_DungeonGeneration : MonoBehaviour
             }
         }
 
+        /*After finding the available coordinates, a random number of them is selected to be added to “rooms_to_create”.
+        For each room to be created, one of the neighbors is selected randomly.*/
+
         int numberOfNeighbors = (int)Random.Range(1, availableNeighbors.Count);
 
         for (int neighborIndex = 0; neighborIndex < numberOfNeighbors; neighborIndex++)
@@ -127,8 +140,6 @@ public class SC_DungeonGeneration : MonoBehaviour
     {
         return this.currentRoom;
     }
-
-
 
 }
 
